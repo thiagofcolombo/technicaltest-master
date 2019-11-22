@@ -11,14 +11,14 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class DefinidorVencedorTest {
+class DefinidorDeVencedorTest {
 
     @org.junit.jupiter.api.Test
     void testeCasoExemplo() {
-        List<DefinidorVencedor.ItemCotacao> cotacoes = lerCotacoes("/test_exemplo_cotacoes.txt");
-        List<DefinidorVencedor.Atualizacao> atualizacoes = lerAtualizacoes("/test_exemplo_atualiza.txt");
+        List<DefinidorDeVencedor.ItemCotacao> cotacoes = lerCotacoes("/test_exemplo_cotacoes.txt");
+        List<DefinidorDeVencedor.Atualizacao> atualizacoes = lerAtualizacoes("/test_exemplo_atualiza.txt");
 
-        final List<DefinidorVencedor.ResultadoCotacao> resultado = new DefinidorVencedor().definirVencedores(cotacoes, atualizacoes);
+        final List<DefinidorDeVencedor.ResultadoCotacao> resultado = new DefinidorDeVencedor().definirVencedores(cotacoes, atualizacoes);
 
         assertNotNull(resultado);
 
@@ -33,10 +33,10 @@ class DefinidorVencedorTest {
 
     @org.junit.jupiter.api.Test
     void testeOutroCaso () {
-        List<DefinidorVencedor.ItemCotacao> cotacoes = lerCotacoes("/test1_cotacoes.txt");
-        List<DefinidorVencedor.Atualizacao> atualizacoes = lerAtualizacoes("/test1_atualiza.txt");
+        List<DefinidorDeVencedor.ItemCotacao> cotacoes = lerCotacoes("/test1_cotacoes.txt");
+        List<DefinidorDeVencedor.Atualizacao> atualizacoes = lerAtualizacoes("/test1_atualiza.txt");
 
-        final List<DefinidorVencedor.ResultadoCotacao> resultado = new DefinidorVencedor().definirVencedores(cotacoes, atualizacoes);
+        final List<DefinidorDeVencedor.ResultadoCotacao> resultado = new DefinidorDeVencedor().definirVencedores(cotacoes, atualizacoes);
         assertNotNull(resultado);
         final List<String> toTest = convertToAssert(resultado);
 
@@ -49,7 +49,7 @@ class DefinidorVencedorTest {
     }
 
 
-    private List<String> convertToAssert(List<DefinidorVencedor.ResultadoCotacao> resultado) {
+    private List<String> convertToAssert(List<DefinidorDeVencedor.ResultadoCotacao> resultado) {
         return resultado.stream().map((res) -> String.format("%s:%s", res.getCodigo(),
                     res.getFornecedores()
                             .stream()
@@ -58,13 +58,13 @@ class DefinidorVencedorTest {
             )).collect(Collectors.toList());
     }
 
-    private List<DefinidorVencedor.Atualizacao> lerAtualizacoes(String resourcePathAtualiza) {
+    private List<DefinidorDeVencedor.Atualizacao> lerAtualizacoes(String resourcePathAtualiza) {
         final List<String> lines = getLines(resourcePathAtualiza);
 
-        ArrayList<DefinidorVencedor.Atualizacao> list = new ArrayList<>(lines.size());
+        ArrayList<DefinidorDeVencedor.Atualizacao> list = new ArrayList<>(lines.size());
         for (String line: lines) {
             final String[] split = line.split("[,]");
-            list.add(new DefinidorVencedor.Atualizacao(
+            list.add(new DefinidorDeVencedor.Atualizacao(
                     split[0],
                     split[1],
                     split[2],
@@ -74,13 +74,13 @@ class DefinidorVencedorTest {
         return list;
     }
 
-    private List<DefinidorVencedor.ItemCotacao> lerCotacoes(String resourcePathCotacoes) {
+    private List<DefinidorDeVencedor.ItemCotacao> lerCotacoes(String resourcePathCotacoes) {
         final List<String> lines = getLines(resourcePathCotacoes);
 
-        ArrayList<DefinidorVencedor.ItemCotacao> list = new ArrayList<>(lines.size());
+        ArrayList<DefinidorDeVencedor.ItemCotacao> list = new ArrayList<>(lines.size());
         for (String line: lines) {
             final String[] split = line.split("[,]");
-            list.add(new DefinidorVencedor.ItemCotacao(
+            list.add(new DefinidorDeVencedor.ItemCotacao(
                     split[0],
                     split[1],
                     new BigDecimal(split[2])

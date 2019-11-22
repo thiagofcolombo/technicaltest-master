@@ -1,5 +1,10 @@
 # Teste desenvolvedor Java
 
+## tarefa
+ - Fazer fork do projeto e implementar a classe br.com.solutiontrue.DefinidorDeVencedor
+ - Depois de implementar colocar o link do fork no formulário de respostas
+
+## explicação
 O nosso portal de fornecedores precisa decidir quem são os melhores colocados após coletar os precos dos itens das cotações
 - Cada cotação pode ter diversos itens diferentes
 - Cada item da cotação define o código da cotação, código do item e a quantidade desejada a ser comprada
