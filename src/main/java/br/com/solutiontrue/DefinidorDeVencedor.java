@@ -20,9 +20,6 @@ public class DefinidorDeVencedor {
 
              após postar o algorítmo final, ele será testado em outros conjuntos de dados que não estão nesse repositório
          */
-
-        //TODO implementar resposta aqui
-
         return Arrays.asList(
                 new ResultadoCotacao("COTA", Arrays.asList(
                         new Fornecedor("FORN2",new BigDecimal(590)),
