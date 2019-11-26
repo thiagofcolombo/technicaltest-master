@@ -13,38 +13,34 @@ O nosso portal de fornecedores precisa decidir quem são os melhores colocados a
 - Os parâmetros não possuem uma ordem específica
 
 **Parâmetros:**
- - cotacoes: Lista de Item da cotação
- - atualizacoes: lista de atualizações
+ - cotacoes: Lista de Item da cotação (formato: CODIGO_COTACAO,CODIGO_ITEM,QUANTIDADE)
+ - atualizacoes: lista de atualizações (formato: CODIGO_COTACAO,CODIGO_FORNECEDOR,CODIGO_ITEM,PRECO)
 
 **Resultado:**
- - retornar uma lista de ResultadoCotacao
+ - retornar uma lista de resultados (formato: CODIGO_COTACAO:FORNECEDOR_VENCEDOR=VALOR_TOTAL,FORNECEDOR_SEGUNDO=VALOR_TOTAL, FORNECEDOR_TERCEIRO=VALOR_TOTAL, etc...)
  - onde cada resultado contenha uma lista de fornecedores melhores qualificados, ordenados pelo total que seria pago se a compra for feita somente com este fornecedor
+ - o total que seria pago deve ser arredondado em duas casas, item por item, antes de ser somado no total do fornecedor (arredondamento HALF_UP)
  - caso o fornecedor empate em valor, a ordem será feita pelo código do fornecedor
 
 **Exemplo:**
 
  se o input de itens de cotação for:
  
-     ItemCotacao(COTA,ITE1,50)
-     ItemCotacao(COTA,ITE2,10)
-     ItemCotacao(COTB,ITE3,500)
+     COTA,ITE1,50
+     COTA,ITE2,10
+     COTB,ITE3,500
  e o input de atualizacoes for:
  
-     Atualizacao(COTA,FORN1,ITE1,5)
-     Atualizacao(COTA,FORN1,ITE2,40)
-     Atualizacao(COTB,FORN1,ITE3,0.4)
-     Atualizacao(COTA,FORN2,ITE1,4)
-     Atualizacao(COTA,FORN2,ITE2,39)
-     Atualizacao(COTB,FORN2,ITE3,0.5)
-     Atualizacao(COTA,FORN3,ITE1,6)
-     Atualizacao(COTA,FORN3,ITE2,41)
+     COTA,FORN1,ITE1,5
+     COTA,FORN1,ITE2,40
+     COTB,FORN1,ITE3,0.4
+     COTA,FORN2,ITE1,4
+     COTA,FORN2,ITE2,39
+     COTB,FORN2,ITE3,0.5
+     COTA,FORN3,ITE1,6
+     COTA,FORN3,ITE2,41
 
  o resultado apresentado deve ser
  
-     ResultadoCotacao(COTA,
-         Fornecedor(FORN2,590)
-         Fornecedor(FORN1,650)
-         Fornecedor(FORN3,710))
-     ResultadoCotacao(COTB,
-         Fornecedor(FORN1,200)
-         Fornecedor(FORN2,250))
+     COTA:FORN2=590,FORN1=650,FORN3=710
+     COTB:FORN1=200,FORN2=250
