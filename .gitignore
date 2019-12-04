@@ -1,3 +1,1 @@
-*.jar
-target
-.idea
+git commit -m “First java program” helloworld.java
